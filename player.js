@@ -1,23 +1,46 @@
 class Player {
     constructor(x, y) {
         var options = {
-            restitution : 0.5,
+            restitution : 0.05,
             density : 1,
             friction : 5
         }
         this.body = Bodies.rectangle(x,y,85,150,options);
-        this.width = 85;
+        this.width = 95;
         this.height = 150;
+        this.imageFront = loadImage("SteveFront.png");
+        this.imageRight = loadImage("steveImages/steve1.gif");
+        this.imageLeft = loadImage("steveImagesR/steve1r.gif");
         World.add(world,this.body);
     }
 
-    display() {
+    displayFront() {
         var pos = this.body.position
         push()
         translate(pos.x,pos.y);
         rotate(this.body.angle);
-        rectMode(CENTER);
-        rect(0,0,this.width,this.height);
+        imageMode(CENTER);
+        image(this.imageFront,0,0,this.width,this.height);
+        pop()
+    }
+
+    displayRight() {
+        var pos = this.body.position
+        push()
+        translate(pos.x,pos.y);
+        rotate(this.body.angle);
+        imageMode(CENTER);
+        image(this.imageRight,0,0,this.width,this.height);
+        pop()
+    }
+
+    displayLeft() {
+        var pos = this.body.position
+        push()
+        translate(pos.x,pos.y);
+        rotate(this.body.angle);
+        imageMode(CENTER);
+        image(this.imageLeft,0,0,this.width,this.height);
         pop()
     }
 }
